@@ -8,9 +8,13 @@ app.use(express.static("src"))
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/src/index.html")
 })
+
+// handle socket connection to express server
 io.on("connect", socket=> {
+    // handle socket when receiving a message from client
     socket.on("send", msg=> {
-        console.log(msg)
+        // broadcast to all other clients
+        socket.emit("broadcast", msg)
     })
 })
 http.listen(process.env.PORT || 3000, console.log("Listening"))
