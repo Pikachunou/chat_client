@@ -7,5 +7,5 @@ document.getElementById("send").addEventListener("click", event=>{
 })
 
 socket.on("broadcast", msg => 
-  alert("Got message: ", msg)
+  alert(`Got message: ${msg}`)
 )
