@@ -14,7 +14,8 @@ io.on("connect", socket=> {
     // handle socket when receiving a message from client
     socket.on("send", msg=> {
         // broadcast to all other clients
-        socket.emit("broadcast", msg)
+        console.log(`Message: ${msg}`)
+        io.emit("broadcast", msg)
     })
 })
 http.listen(process.env.PORT || 3000, console.log("Listening"))
